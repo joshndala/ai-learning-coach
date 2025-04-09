@@ -41,7 +41,7 @@ export default function DashboardPage() {
   return (
     <div className="min-h-screen bg-background">
       <header className="border-b">
-        <div className="container flex h-16 items-center justify-between px-4">
+        <div className="container mx-auto flex h-16 items-center justify-between px-4">
           <div className="flex items-center gap-2">
             <BookOpen className="h-6 w-6 text-primary" />
             <h1 className="text-xl font-bold">AI Learning Coach</h1>
@@ -55,7 +55,7 @@ export default function DashboardPage() {
         </div>
       </header>
 
-      <main className="container px-4 py-6">
+      <main className="container mx-auto px-4 py-6">
         <div className="flex items-center justify-between mb-6">
           <h2 className="text-3xl font-bold">Your Classes</h2>
           <Button>
@@ -64,7 +64,7 @@ export default function DashboardPage() {
           </Button>
         </div>
 
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
           {classes.map((classItem) => (
             <Link href={`/classes/${classItem.id}`} key={classItem.id} className="block">
               <Card className="h-full transition-all hover:shadow-md">

@@ -1,0 +1,21 @@
+# === Core Framework ===
+fastapi
+uvicorn[standard]
+
+# === AI / Embeddings / Agents ===
+langchain
+sentence-transformers     # for Hugging Face embeddings
+
+# === Vector Store ===
+chromadb
+
+# === File Parsing ===
+pdfplumber                   # for parsing syllabus PDFs
+
+# === Utility ===
+python-dotenv             # .env file support
+requests                  # for external API calls
+pydantic                  # for data models (already included via FastAPI, but okay to be explicit)
+
+# === Database ===
+supabase
