@@ -9,7 +9,17 @@ HEADERS = {
     "Content-Type": "application/json"
 }
 
-def call_llm(prompt: str, model: str = "anthropic/claude-3-sonnet", temperature: float = 0.3) -> str:
+MODEL_ROUTER = {
+    "syllabus": "anthropic/claude-3-opus",
+    "notes": "anthropic/claude-3-sonnet",
+    "quiz": "openai/gpt-4",
+    "chat": "anthropic/claude-3-sonnet",
+    "grading": "openai/gpt-4",
+}
+
+def call_llm(prompt: str, model_key: str = "notes", temperature: float = 0.3) -> str:
+    model = MODEL_ROUTER.get(model_key, "anthropic/claude-3-sonnet")
+
     payload = {
         "model": model,
         "messages": [
@@ -22,9 +32,9 @@ def call_llm(prompt: str, model: str = "anthropic/claude-3-sonnet", temperature:
     response.raise_for_status()
     return response.json()["choices"][0]["message"]["content"]
 
-def call_llm_json(prompt: str, model: str = "anthropic/claude-3-sonnet") -> dict:
+def call_llm_json(prompt: str, model_key: str = "notes") -> dict:
     try:
-        content = call_llm(prompt, model=model, temperature=0.2)
+        content = call_llm(prompt=prompt, model_key=model_key)
         return eval(content) if content.strip().startswith("{") else {"raw": content}
     except Exception:
         return {"raw": content if 'content' in locals() else "error"}

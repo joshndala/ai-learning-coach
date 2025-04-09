@@ -14,7 +14,7 @@ class NoteSummarizerAgent:
             "Feel free to use lists, tables, headers, and formatting where appropriate to improve readability.\n\n"
             f"{text}"
         )
-        return {"markup": call_llm(prompt)}
+        return {"markup": call_llm(prompt=prompt, model_key="notes")}
 
     def summarize_file(self, file_path: str) -> dict:
         """

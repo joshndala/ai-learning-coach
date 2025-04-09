@@ -29,5 +29,5 @@ class SyllabusParserAgent:
             f"{raw_text}"
         )
 
-        parsed = call_llm_json(prompt)
+        parsed = call_llm_json(prompt=prompt, model_key="syllabus")
         return parsed
